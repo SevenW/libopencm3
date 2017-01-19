@@ -1,4 +1,4 @@
-/* This provides unification of code over STM32F subfamilies */
+/* This provides unification of code over STM32 subfamilies */
 
 /*
  * This file is part of the libopencm3 project.
@@ -17,11 +17,12 @@
  * along with this library.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#if defined(STM32F1)
-#       include <libopencm3/ethernet/mac/stm32fxx7.h>
-#elif defined(STM32F4)
-#       include <libopencm3/ethernet/mac/stm32fxx7.h>
+#include <libopencm3/cm3/common.h>
+#include <libopencm3/stm32/memorymap.h>
+
+#if defined(STM32F4)
+#       include <libopencm3/stm32/f4/dma2d.h>
 #else
-#       error "stm32 family not defined."
+#       error "dma2d.h not available for this family."
 #endif
 

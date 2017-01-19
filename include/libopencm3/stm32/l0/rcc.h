@@ -129,13 +129,13 @@
 /* MCO: Microcontroller clock output */
 #define RCC_CFGR_MCO_NOCLK			0x0
 #define RCC_CFGR_MCO_SYSCLK			0x1
-#define RCC_CFGR_MCO_HSI16CLK			0x2
-#define RCC_CFGR_MCO_MSICLK			0x3
-#define RCC_CFGR_MCO_HSECLK			0x4
-#define RCC_CFGR_MCO_PLLCLK			0x5
-#define RCC_CFGR_MCO_LSICLK			0x6
-#define RCC_CFGR_MCO_LSECLK			0x7
-#define RCC_CFGR_MCO_HSI48CLK			0x8
+#define RCC_CFGR_MCO_HSI16			0x2
+#define RCC_CFGR_MCO_MSI			0x3
+#define RCC_CFGR_MCO_HSE			0x4
+#define RCC_CFGR_MCO_PLL			0x5
+#define RCC_CFGR_MCO_LSI			0x6
+#define RCC_CFGR_MCO_LSE			0x7
+#define RCC_CFGR_MCO_HSI48			0x8
 #define RCC_CFGR_MCO_SHIFT			24
 #define RCC_CFGR_MCO_MASK			0xf
 
@@ -292,7 +292,9 @@
 #define RCC_APB1RSTR_SPI2RST			(1 << 14)
 #define RCC_APB1RSTR_WWDGRST			(1 << 11)
 #define RCC_APB1RSTR_LCDRST			(1 << 9)
+#define RCC_APB1RSTR_TIM7RST			(1 << 5)
 #define RCC_APB1RSTR_TIM6RST			(1 << 4)
+#define RCC_APB1RSTR_TIM3RST			(1 << 1)
 #define RCC_APB1RSTR_TIM2RST			(1 << 0)
 
 /* --- RCC_IOPENR - GPIO clock enable register */
@@ -352,7 +354,9 @@
 #define RCC_APB1ENR_SPI2EN			(1 << 14)
 #define RCC_APB1ENR_WWDGEN			(1 << 11)
 #define RCC_APB1ENR_LCDEN			(1 << 9)
+#define RCC_APB1ENR_TIM7EN			(1 << 5)
 #define RCC_APB1ENR_TIM6EN			(1 << 4)
+#define RCC_APB1ENR_TIM3EN			(1 << 1)
 #define RCC_APB1ENR_TIM2EN			(1 << 0)
 /*@}*/
 
@@ -399,7 +403,9 @@
 #define RCC_APB1SMENR_SPI2SMEN		(1 << 14)
 #define RCC_APB1SMENR_WWDGSMEN		(1 << 11)
 #define RCC_APB1SMENR_LCDSMEN		(1 << 9)
+#define RCC_APB1SMENR_TIM7SMEN		(1 << 5)
 #define RCC_APB1SMENR_TIM6SMEN		(1 << 4)
+#define RCC_APB1SMENR_TIM3SMEN		(1 << 1)
 #define RCC_APB1SMENR_TIM2SMEN		(1 << 0)
 
 /* --- RCC_CCIPR - Clock config register */
@@ -451,7 +457,7 @@
 #define RCC_CSR_OBLRSTF				(1 << 25)
 #define RCC_CSR_RMVF				(1 << 24)
 #define RCC_CSR_RTCRST				(1 << 19)
-#define RCC_CSR_RTCEN				(1 << 19)
+#define RCC_CSR_RTCEN				(1 << 18)
 #define RCC_CSR_RTCSEL_SHIFT			(16)
 #define RCC_CSR_RTCSEL_MASK			(0x3)
 #define RCC_CSR_RTCSEL_NONE			(0x0)
@@ -666,7 +672,6 @@ void rcc_osc_ready_int_clear(enum rcc_osc osc);
 void rcc_osc_ready_int_enable(enum rcc_osc osc);
 void rcc_osc_ready_int_disable(enum rcc_osc osc);
 int rcc_osc_ready_int_flag(enum rcc_osc osc);
-void rcc_wait_for_osc_ready(enum rcc_osc osc);
 void rcc_set_hsi48_source_rc48(void);
 void rcc_set_hsi48_source_pll(void);
 void rcc_set_pll_source_hsi16(void);
