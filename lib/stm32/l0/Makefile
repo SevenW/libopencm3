@@ -48,9 +48,10 @@ OBJS		+= i2c_common_v2.o
 OBJS		+= usart.o
 OBJS		+= usart_common_l0f0.o
 OBJS		+= usart_common_v2.o
+OBJS		+= exti_common_all.o
 
-OBJS            += usb.o usb_control.o usb_standard.o
-OBJS            += st_usbfs_core.o st_usbfs_v2.o
+OBJS		+= usb.o usb_control.o usb_standard.o
+OBJS		+= st_usbfs_core.o st_usbfs_v2.o
 
 VPATH += ../../usb:../:../../cm3:../common
 
